@@ -60,7 +60,7 @@ for (ancestry in c("Caucasian", "African American")){
         predicted_LDL_with_covars <- summary(lm(as.formula(paste0('LDL_mean~gender+BATCH+Age+PC1+PC2+PC3+PC4+normalized')), data=risk_score))
         ci <- c()
         for(j in 1:1000){
-            tmp <- summary(lm(as.formula(paste0('LDL_mean~gender+BATCH+Age+PC1+PC2+PC3+PC4+score')), data=risk_score[sample(nrow(risk_score), replace=T),]))
+            tmp <- summary(lm(as.formula(paste0('LDL_mean~gender+BATCH+Age+PC1+PC2+PC3+PC4+normalized')), data=risk_score[sample(nrow(risk_score), replace=T),]))
          ci <- c(ci,tmp$adj.r.squared)
           if(j%%100==0){ print(j)}
         }
